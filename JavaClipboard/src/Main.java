@@ -31,20 +31,30 @@ public class Main extends JFrame {
 	        String current = (String) (c.getData(DataFlavor.stringFlavor));
 	        
 	        // Pushes the current to clippy and moves the previous to next
-	        	clippy[counter] = current;
+	        clippy[counter] = current;
 
-	        
-	        
 	        // Get data stored in the clipboard that is in the form of a string (text)
 	        for (int i = 0; i < 10; i++) {
 	        System.out.println("Clippy " + (i+1) + ": \n" + clippy[i] + "\n");
-        }
-	       while(current != clippy[0]){
-	    	   try {
-	    		   TimeUnit.SECONDS.sleep(1);
-	    		   counter++;
-	    		   clippy();
-	    	   } catch (Exception e) {}
-	       }
+	        }
+	
+	        counter++;
+	        Toolkit.getDefaultToolkit().getSystemClipboard().addFlavorListener(new FlavorListener() { 
+	        	   @Override 
+	        	   public void flavorsChanged(FlavorEvent e) {
+	    	    		   try {
+							TimeUnit.SECONDS.sleep(1);
+			  	    		clippy();
+						} catch (InterruptedException | UnsupportedFlavorException | IOException e1) {
+							System.exit(0);
+							e1.printStackTrace();
+						}
+	    	    		   
+	  
+	        	   } 
+	        	}
+	        )
+	        ; 
+   
 	}
 }

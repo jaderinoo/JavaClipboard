@@ -1,4 +1,6 @@
 import java.awt.datatransfer.*;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -21,40 +23,23 @@ public class Main extends JFrame {
 	
 
 	
-	public static void clippy() throws UnsupportedFlavorException, IOException {
-		String[] clippy = new String[10];
-		int counter = 0;
-	        // Create a Clipboard object using getSystemClipboard() method
-	        Clipboard c=Toolkit.getDefaultToolkit().getSystemClipboard();
-	        
-	        // Set Clipboard to current clippy
+	public static void clippy() throws UnsupportedFlavorException, IOException, InterruptedException {
+		
+	        Clipboard c=Toolkit.getDefaultToolkit().getSystemClipboard();  
 	        String current = (String) (c.getData(DataFlavor.stringFlavor));
-	        
-	        // Pushes the current to clippy and moves the previous to next
-	        clippy[counter] = current;
+	        System.out.println(current);
 
-	        // Get data stored in the clipboard that is in the form of a string (text)
-	        for (int i = 0; i < 10; i++) {
-	        System.out.println("Clippy " + (i+1) + ": \n" + clippy[i] + "\n");
+	        int x = 0;
+	        while(x == 0) {
+	        	Toolkit.getDefaultToolkit().getSystemClipboard().addFlavorListener(new FlavorListener() { 
+	        		@Override
+	        		public void flavorsChanged(FlavorEvent e) {
+	        			System.out.println("Clipboard Updated: \n" + current);
+	        			} 
+	        		}); 
+	        	Thread.sleep(100000L); 
+	        	clippy();
 	        }
-	
-	        counter++;
-	        Toolkit.getDefaultToolkit().getSystemClipboard().addFlavorListener(new FlavorListener() { 
-	        	   @Override 
-	        	   public void flavorsChanged(FlavorEvent e) {
-	    	    		   try {
-							TimeUnit.SECONDS.sleep(1);
-			  	    		clippy();
-						} catch (InterruptedException | UnsupportedFlavorException | IOException e1) {
-							System.exit(0);
-							e1.printStackTrace();
-						}
-	    	    		   
-	  
-	        	   } 
-	        	}
-	        )
-	        ; 
-   
 	}
 }
+

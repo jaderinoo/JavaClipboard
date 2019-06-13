@@ -17,11 +17,22 @@ public class Main {
 	        String current = (String) (c.getData(DataFlavor.stringFlavor));
 	        
 	        // Pushes the current to clippy and moves the previous to next
-	        clippy[0] = current;
+	        for (int i = 0; i < 10; i++) {
+	        if(clippy[i] != null) {
+	        	clippy[i+1] = current;
+	        	break;
+	        }else {
+	        	clippy[i] = current;
+	        	break;
+	        }
+	        }
+	        
 	        
 	        // Get data stored in the clipboard that is in the form of a string (text)
-	        for (int i = 0; i < 5; i++) {
+	        for (int i = 0; i < 10; i++) {
 	        System.out.println("Clippy " + (i+1) + ": \n" + clippy[i] + "\n");
         }
+	        if()
+	        clippy();
 	}
 }

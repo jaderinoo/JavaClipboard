@@ -55,7 +55,6 @@ public class ClippyFace {
 	static int check = 0;
 	static JFrame initialize(String clippyArray) {
 		
-
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -79,11 +78,6 @@ public class ClippyFace {
 		table.setBackground(Color.LIGHT_GRAY);
 		table.setCellSelectionEnabled(true);
 		frame.getContentPane().add(table, BorderLayout.CENTER);
-        
-		JScrollPane scrollPane = new JScrollPane();
-		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
-		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
-		frame.getContentPane().add(scrollPane, BorderLayout.EAST);
 
 		return frame;
 

@@ -8,6 +8,7 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
+import javax.swing.ScrollPaneConstants;
 
 public class ClippyFace {
 
@@ -57,6 +58,11 @@ public class ClippyFace {
 		table.getColumnModel().getColumn(0).setPreferredWidth(75);
 		table.getColumnModel().getColumn(0).setMinWidth(10);
 		table.getColumnModel().getColumn(0).setMaxWidth(75);
+		
+		JScrollPane scrollPane = new JScrollPane();
+		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
+		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
+		frame.getContentPane().add(scrollPane, BorderLayout.EAST);
 		table.setBackground(Color.LIGHT_GRAY);
 		table.setBorder(new LineBorder(new Color(0, 0, 0), 5));
 		frame.getContentPane().add(table, BorderLayout.CENTER);

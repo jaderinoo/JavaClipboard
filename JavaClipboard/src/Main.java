@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import javax.swing.JFrame;
+import javax.swing.JScrollPane;
+
 import java.awt.*;
 
 public class Main extends JFrame {
@@ -38,11 +40,11 @@ public class Main extends JFrame {
 						} catch (UnsupportedFlavorException | IOException e1) {
 							e1.printStackTrace();
 						}
-	        			System.out.println("Clipboard Updated: \n" + clippyArray[0]);
+	        			System.out.println("Clipboard Updated: \n" + clippyArray[0] + "\n");
 	        			
 	        			} 
 	        		}); 
-	        	Thread.sleep(50000L); 
+	        	Thread.sleep(200000L); 
 	        	clippy();
 	        }
 	}

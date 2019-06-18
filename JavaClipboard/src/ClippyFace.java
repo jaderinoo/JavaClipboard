@@ -9,6 +9,7 @@ import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.ScrollPaneConstants;
+import java.awt.Font;
 
 public class ClippyFace {
 
@@ -47,6 +48,8 @@ public class ClippyFace {
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
 		table = new JTable();
+		table.setCellSelectionEnabled(true);
+		table.setFont(new Font("Tahoma", Font.PLAIN, 15));
 		table.setModel(new DefaultTableModel(
 			new Object[][] {
 				{null, null},

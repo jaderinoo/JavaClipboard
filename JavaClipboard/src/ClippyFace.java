@@ -5,6 +5,8 @@ import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableColumnModel;
+import javax.swing.table.TableModel;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
@@ -42,6 +44,7 @@ public class ClippyFace {
 	/**
 	 * Initialize the contents of the frame.
 	 */
+	@SuppressWarnings("serial")
 	static void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
@@ -50,15 +53,7 @@ public class ClippyFace {
 		table = new JTable();
 		table.setCellSelectionEnabled(true);
 		table.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		table.setModel(new DefaultTableModel(
-			new Object[][] {
-				{null, null},
-			},
-			new String[] {
-				"Time", "Clipboard"
-			}
-		));
-		table.getColumnModel().getColumn(0).setPreferredWidth(75);
+		
 		table.getColumnModel().getColumn(0).setMinWidth(10);
 		table.getColumnModel().getColumn(0).setMaxWidth(75);
 		

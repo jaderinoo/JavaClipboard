@@ -39,7 +39,9 @@ public class Main extends JFrame {
 						} catch (UnsupportedFlavorException | IOException e1) {
 							e1.printStackTrace();
 						}
-	        			System.out.println("Clipboard Updated: \n" + clippyArray[0] + "\n");
+						
+						
+	        			//System.out.println("Clipboard Updated: \n" + clippyArray[0] + "\n");
 	        			
 	        			} 
 	        		}); 

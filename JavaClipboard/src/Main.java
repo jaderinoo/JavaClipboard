@@ -12,13 +12,12 @@ import java.awt.*;
 public class Main extends JFrame {
 	public static void main(String[] args)throws Exception
     {
-		Console console = new Console();
-	    console.init();
+		//Legacy Test code
+		ClippyFace ClippyFace = new ClippyFace();
+	    ClippyFace.init();
 	    Main launcher = new Main();
 	    launcher.setVisible(false);
-	    console.getFrame().setLocation(
-	    launcher.getX() + launcher.getWidth() + launcher.getInsets().right,
-	    launcher.getY());
+	    
 		clippy();
 		
     }

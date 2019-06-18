@@ -11,7 +11,6 @@ import javax.swing.JTextArea;
 
 class Console {
 	final JFrame frame = new JFrame();
-	JScrollPane pane = new JScrollPane(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS,JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
 	
 	public Console() {
 		JTextArea textArea = new JTextArea(24, 80);
@@ -29,7 +28,6 @@ class Console {
 	public void init() {
 		frame.pack();
 		frame.setVisible(true);
-		frame.add(pane);
 		frame.setAlwaysOnTop(true);
 
 	}

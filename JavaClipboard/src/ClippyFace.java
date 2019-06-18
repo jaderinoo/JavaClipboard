@@ -13,6 +13,10 @@ import java.awt.Font;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
+import javax.swing.border.MatteBorder;
+import javax.swing.border.SoftBevelBorder;
+import javax.swing.border.BevelBorder;
+import javax.swing.ListSelectionModel;
 
 public class ClippyFace {
 
@@ -26,7 +30,7 @@ public class ClippyFace {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					ClippyFace window = new ClippyFace();
+					ClippyFace window = new ClippyFace(null);
 					window.frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -39,17 +43,19 @@ public class ClippyFace {
 	 * Create the application.
 	 * @wbp.parser.entryPoint
 	 */
-	public ClippyFace() {
-		initialize(0,null);
+	public ClippyFace(String current) {
+		initialize(current);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
 	 * @return 
 	 */
-	static int initialize(int check, String clippyArray) {
-		DefaultTableModel model = new DefaultTableModel();
-		if(check == 0) {
+	static DefaultTableModel model = new DefaultTableModel();
+	static int check = 0;
+	static JFrame initialize(String clippyArray) {
+		
+
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -58,40 +64,37 @@ public class ClippyFace {
         //Table Creation
         
         table = new JTable(model);
-        model.addColumn("Col1");
-        model.addRow(new Object[] { "r1" });
-        model.addRow(new Object[] { "r2" });
-        model.addRow(new Object[] { "r3" });
-        
-        Vector data = model.getDataVector();
-        Vector row = (Vector) data.elementAt(1);
-        
-        int mColIndex = 0;
-        List colData = new ArrayList(table.getRowCount());
-        for (int i = 0; i < table.getRowCount(); i++) {
-          row = (Vector) data.elementAt(i);
-          colData.add(row.get(mColIndex));
+        table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
+        table.setBorder(new MatteBorder(3, 3, 3, 3, (Color) Color.BLACK));
+        table.setFont(new Font("Tahoma", Font.PLAIN, 15));
+        if(check == 0) {
+        	model.addColumn("Col1");
+        	check = 1;
         }
         
+        if(check == 1) {
+        	model.insertRow(0, new String[] { clippyArray });
+        }
         
 		table.setBackground(Color.LIGHT_GRAY);
 		table.setCellSelectionEnabled(true);
 		frame.getContentPane().add(table, BorderLayout.CENTER);
         
-
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		frame.getContentPane().add(scrollPane, BorderLayout.EAST);
-		check = 1;
-		
-		}
-		model.addRow(new Object[] { clippyArray });
-		return 0;
+
+		return frame;
+
 	}
 
 	public JFrame getFrame() {
 		return frame;
+	}
+	
+	public static void test(String current) {
+		System.out.println(current);
 	}
 	
 	public void init() {

@@ -40,7 +40,7 @@ public class Main extends JFrame {
 							e1.printStackTrace();
 						}
 						
-						
+						ClippyFace.addRow(clippyArray[0]);
 	        			//System.out.println("Clipboard Updated: \n" + clippyArray[0] + "\n");
 	        			
 	        			} 

@@ -5,13 +5,14 @@ import javax.swing.JScrollPane;
 import java.awt.BorderLayout;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
-import javax.swing.table.TableColumnModel;
-import javax.swing.table.TableModel;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
 import java.awt.Color;
 import javax.swing.ScrollPaneConstants;
 import java.awt.Font;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Vector;
 
 public class ClippyFace {
 
@@ -44,31 +45,51 @@ public class ClippyFace {
 	/**
 	 * Initialize the contents of the frame.
 	 */
-	@SuppressWarnings("serial")
 	static void initialize() {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		
-		table = new JTable();
+        frame.setTitle("JavaClipboard"); 
+        
+        //Table Creation
+        DefaultTableModel model = new DefaultTableModel();
+        table = new JTable(model);
+        model.addColumn("Col1");
+        model.addRow(new Object[] { "r1" });
+        model.addRow(new Object[] { "r2" });
+        model.addRow(new Object[] { "r3" });
+        
+        Vector data = model.getDataVector();
+        Vector row = (Vector) data.elementAt(1);
+        
+        int mColIndex = 0;
+        List colData = new ArrayList(table.getRowCount());
+        for (int i = 0; i < table.getRowCount(); i++) {
+          row = (Vector) data.elementAt(i);
+          colData.add(row.get(mColIndex));
+        }
+        
+        
+		table.setBackground(Color.LIGHT_GRAY);
 		table.setCellSelectionEnabled(true);
-		table.setFont(new Font("Tahoma", Font.PLAIN, 15));
-		
-		table.getColumnModel().getColumn(0).setMinWidth(10);
-		table.getColumnModel().getColumn(0).setMaxWidth(75);
-		
+		frame.getContentPane().add(table, BorderLayout.CENTER);
+        
+
 		JScrollPane scrollPane = new JScrollPane();
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		frame.getContentPane().add(scrollPane, BorderLayout.EAST);
-		table.setBackground(Color.LIGHT_GRAY);
-		table.setBorder(new LineBorder(new Color(0, 0, 0), 5));
-		frame.getContentPane().add(table, BorderLayout.CENTER);
+		
 
 	}
 
 	public JFrame getFrame() {
 		return frame;
+	}
+	
+	public static void addRow(String clippyArray) {
+		//Work on this
+		//model.addRow(new Object[] { clippyArray });
 	}
 	
 	public void init() {

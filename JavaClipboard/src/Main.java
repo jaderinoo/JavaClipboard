@@ -25,19 +25,24 @@ public class Main extends JFrame {
 	
 	public static void clippy() throws UnsupportedFlavorException, IOException, InterruptedException {
 		
-	        Clipboard c=Toolkit.getDefaultToolkit().getSystemClipboard();  
-	        String current = (String) (c.getData(DataFlavor.stringFlavor));
-	        System.out.println(current);
+		String[] clippyArray = new String[20]; 
+	    Clipboard c=Toolkit.getDefaultToolkit().getSystemClipboard();  
 
-	        int x = 0;
+	    int x = 0;
 	        while(x == 0) {
 	        	Toolkit.getDefaultToolkit().getSystemClipboard().addFlavorListener(new FlavorListener() { 
 	        		@Override
 	        		public void flavorsChanged(FlavorEvent e) {
-	        			System.out.println("Clipboard Updated: \n" + current);
+						try {
+							clippyArray[0] = (String) (c.getData(DataFlavor.stringFlavor));
+						} catch (UnsupportedFlavorException | IOException e1) {
+							e1.printStackTrace();
+						}
+	        			System.out.println("Clipboard Updated: \n" + clippyArray[0]);
+	        			
 	        			} 
 	        		}); 
-	        	Thread.sleep(100000L); 
+	        	Thread.sleep(50000L); 
 	        	clippy();
 	        }
 	}

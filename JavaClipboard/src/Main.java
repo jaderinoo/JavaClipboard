@@ -13,23 +13,33 @@ public class Main extends JFrame {
 	public static void main(String[] args)throws Exception
     {
 		//Legacy Test code
+		Console console = new Console();
+	    console.init();
+	    Main launcher2 = new Main();
+	    launcher2.setVisible(false);
+	    console.getFrame().setLocation(
+	    launcher2.getX() + launcher2.getWidth() + launcher2.getInsets().right,
+	    launcher2.getY());
+		
+		
+		
 		ClippyFace ClippyFace = new ClippyFace();
-	    ClippyFace.init();
+		ClippyFace.init();
 	    Main launcher = new Main();
 	    launcher.setVisible(false);
 	    
-		clippy();
+		clippy(0);
 		
     }
 	
 
 	
-	public static void clippy() throws UnsupportedFlavorException, IOException, InterruptedException {
+	public static void clippy(int x) throws UnsupportedFlavorException, IOException, InterruptedException {
 		
 		String[] clippyArray = new String[20]; 
 	    Clipboard c=Toolkit.getDefaultToolkit().getSystemClipboard();  
 
-	    int x = 0;
+
 	        while(x == 0) {
 	        	Toolkit.getDefaultToolkit().getSystemClipboard().addFlavorListener(new FlavorListener() { 
 	        		@Override
@@ -40,13 +50,13 @@ public class Main extends JFrame {
 							e1.printStackTrace();
 						}
 						
-						ClippyFace.addRow(clippyArray[0]);
-	        			//System.out.println("Clipboard Updated: \n" + clippyArray[0] + "\n");
+						//ClippyFace.addRow(clippyArray[0]);
+	        			System.out.println("Clipboard Updated: \n" + clippyArray[0] + "\n");
 	        			
 	        			} 
 	        		}); 
 	        	Thread.sleep(200000L); 
-	        	clippy();
+	        	clippy(0);
 	        }
 	}
 }

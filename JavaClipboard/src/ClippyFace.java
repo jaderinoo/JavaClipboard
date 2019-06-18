@@ -37,22 +37,26 @@ public class ClippyFace {
 
 	/**
 	 * Create the application.
+	 * @wbp.parser.entryPoint
 	 */
 	public ClippyFace() {
-		initialize();
+		initialize(0,null);
 	}
 
 	/**
 	 * Initialize the contents of the frame.
+	 * @return 
 	 */
-	static void initialize() {
+	static int initialize(int check, String clippyArray) {
+		DefaultTableModel model = new DefaultTableModel();
+		if(check == 0) {
 		frame = new JFrame();
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("JavaClipboard"); 
         
         //Table Creation
-        DefaultTableModel model = new DefaultTableModel();
+        
         table = new JTable(model);
         model.addColumn("Col1");
         model.addRow(new Object[] { "r1" });
@@ -79,17 +83,15 @@ public class ClippyFace {
 		scrollPane.setHorizontalScrollBarPolicy(ScrollPaneConstants.HORIZONTAL_SCROLLBAR_NEVER);
 		scrollPane.setVerticalScrollBarPolicy(ScrollPaneConstants.VERTICAL_SCROLLBAR_ALWAYS);
 		frame.getContentPane().add(scrollPane, BorderLayout.EAST);
+		check = 1;
 		
-
+		}
+		model.addRow(new Object[] { clippyArray });
+		return 0;
 	}
 
 	public JFrame getFrame() {
 		return frame;
-	}
-	
-	public static void addRow(String clippyArray) {
-		//Work on this
-		//model.addRow(new Object[] { clippyArray });
 	}
 	
 	public void init() {

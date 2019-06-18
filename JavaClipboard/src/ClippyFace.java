@@ -46,7 +46,6 @@ public class ClippyFace {
 	public ClippyFace(String current) {
 		initialize(current);
 	}
-
 	/**
 	 * Initialize the contents of the frame.
 	 * @return 
@@ -59,9 +58,7 @@ public class ClippyFace {
 		frame.setBounds(100, 100, 450, 300);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         frame.setTitle("JavaClipboard"); 
-        
         //Table Creation
-        
         table = new JTable(model);
         table.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         table.setBorder(new MatteBorder(3, 3, 3, 3, (Color) Color.BLACK));
@@ -70,17 +67,14 @@ public class ClippyFace {
         	model.addColumn("Col1");
         	check = 1;
         }
-        
         if(check == 1) {
         	model.insertRow(0, new String[] { clippyArray });
         }
-        
 		table.setBackground(Color.LIGHT_GRAY);
 		table.setCellSelectionEnabled(true);
 		frame.getContentPane().add(table, BorderLayout.CENTER);
 
 		return frame;
-
 	}
 
 	public JFrame getFrame() {

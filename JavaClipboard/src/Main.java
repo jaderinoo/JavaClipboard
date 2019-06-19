@@ -13,12 +13,13 @@ public class Main extends JFrame {
 	public static void main(String[] args)throws Exception
     {
 		//Legacy Test code
+		/*
 		Console console = new Console();
 	    console.init();
 	    Main launcher2 = new Main();
 	    launcher2.setVisible(false);
 	    console.getFrame().setLocation(launcher2.getX() + launcher2.getWidth() + launcher2.getInsets().right, launcher2.getY());
-		
+		*/
 		clippy(0);
 		
     }
@@ -42,7 +43,7 @@ public class Main extends JFrame {
 							e1.printStackTrace();
 						}
 						ClippyFace.initialize(clippyArray[0]);
-
+						// System.out.println(clippyArray[0]);
 	        			
 	        			} 
 	        		}); 
@@ -53,7 +54,7 @@ public class Main extends JFrame {
 	    	    launcher.setVisible(false);
 	    	    ClippyFace.getFrame();
 	    	    
-	        	Thread.sleep(200000L); 
+	        	Thread.sleep(2000000L); 
 	        	clippy(0);
 	        }
 	}

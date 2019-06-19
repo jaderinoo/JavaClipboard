@@ -3,4 +3,4 @@ A program that registers users copy's and allows them to access them in an easil
 
 Depiction:
 
-![ ](/depiciton.png)
+![ ](/depiction.png)

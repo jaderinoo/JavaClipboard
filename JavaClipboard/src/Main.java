@@ -20,11 +20,24 @@ public class Main extends JFrame {
 	    launcher2.setVisible(false);
 	    console.getFrame().setLocation(launcher2.getX() + launcher2.getWidth() + launcher2.getInsets().right, launcher2.getY());
 		*/
-		clippy(0);
+		//clippy(0);
 		
+		Toolkit.getDefaultToolkit().getSystemClipboard().addFlavorListener(new FlavorListener() { 
+    		@Override
+    		public void flavorsChanged(FlavorEvent e) {
+    			System.out.println(e.getSource());
+    		}}); 
+		
+		
+		String[] clippyArray = new String[20]; 
+		ClippyFace ClippyFace = new ClippyFace(clippyArray[0]);
+		ClippyFace.init();
+	    Main launcher = new Main();
+	    launcher.setVisible(false);
+	    ClippyFace.getFrame();
     }
 	
-
+	 
 	
 	public static void clippy(int x) throws UnsupportedFlavorException, IOException, InterruptedException {
 		
@@ -57,6 +70,11 @@ public class Main extends JFrame {
 	        	Thread.sleep(2000000L); 
 	        	clippy(0);
 	        }
+	        
+	        
+	        
+	        
+	        
 	}
 }
 
